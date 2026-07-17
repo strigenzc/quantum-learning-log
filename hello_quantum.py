@@ -2,7 +2,10 @@
 hello_quantum.py
 ----------------
 A simple script to demonstrate quantum entanglement (Bell State) using Qiskit.
-This serves as the 'Hello, World' of quantum computing.
+Quantum is like two spinning coins. When you flip a coin - it lands on heads or tails,
+in Quantum - while the coin is spinning on its side -, its basically both heads and
+tails. Schrodinger's coin if you will. 
+PS Quantum uses Python
 """
 
 from qiskit import QuantumCircuit
@@ -12,17 +15,17 @@ from qiskit_aer import AerSimulator
 qc = QuantumCircuit(2, 2)
 
 # 2. Put Qubit 0 into Superposition (The "spinning coin" state)
-# H = Hadamard gate
+# H = Hadamard gate aka turning a classic bit into a spinning quantum bit
 qc.h(0)
 
-# 3. Entangle Qubit 0 with Qubit 1
+# 3. link Qubit 0 with Qubit 1
 # CX = Controlled-NOT gate (equivalent to a quantum CNOT)
 qc.cx(0, 1)
 
-# 4. Measure both qubits into their corresponding classical bits
+# 4. Measure both qubits into their corresponding classical bits. They're linked 
+#so they'll match
 qc.measure([0, 1], [0, 1])
 
-# 5. Initialize the local simulator
 simulator = AerSimulator()
 
 # 6. Run the experiment 1,000 times (shots) to gather statistical data
